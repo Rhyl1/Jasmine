@@ -1,30 +1,83 @@
-describe ("whatCanIDrink", function() {
-
-    beforeEach(function(){
-        age = new whatCanIDrink;
+describe("My whatCanIDrink function", function() {
+    // A test suite begins with a call to the global Jasmine function describe with two parameters: a string and a function.
+    beforeEach(function() {
+        drink = new whatCanIDrink();
     });
 
-
-    describe("age tests", function() {
-        it("should return an error if <0 ", function (){
-            age < (0);
-            expect(window.alert).toHaveBeenCalledWith("Sorry. I can't tell what drink because the age is incorrect!");
+    describe("Checks age", function() {
+        // Specs are defined by calling the global Jasmine function it
+        it("should exist", function() {
+            // Expectations are built with the function expect which takes a value, called the actual.
+            // Each matcher implements a boolean comparison between the actual value and the expected value.
+            // Any matcher can evaluate to a negative assertion by chaining the call to expect with a not before calling the matcher.
+            expect(whatCanIDrink).toBeDefined();
         });
-        it("should return a message if < 14", function(){
-            age < (14);
-            expect(console.log).toBe("Drink Toddy");
-        })
-        it("should return a message if < 18", function(){
-            age < (18);
-            expect(console.log).toBe("Drink Coke");
-        })
-        it("should return a message if < 21", function(){
-            age < (21);
-            expect(console.log).toBe("Drink Beer");
-        })
-        it("should return a message if < 130", function(){
-            age < (130);
-            expect(console.log).toBe("Drink Whisky");
-        })
+
+        it("should return drink toddy when called as whatCanIDrink(13)", function() {
+            var result = whatCanIDrink(13)
+            expect(result).toBe("Drink Toddy");
+        });
+
+
+        it("should return drink coke when called as whatCanIDrink(17)", function() {
+            var result = whatCanIDrink(17)
+            expect(result).toBe("Drink Coke");
+        });
+
+        it("should return drink beer when called as whatCanIDrink(18)", function() {
+            var result = whatCanIDrink(18)
+            expect(result).toBe("Drink Beer");
+        });
+
+        it("should return drink beer when called as whatCanIDrink(20)", function() {
+            var result = whatCanIDrink(20)
+            expect(result).toBe("Drink Beer");
+        });
+
+        it("should return drink whisky when called as whatCanIDrink(30)", function() {
+            var result = whatCanIDrink(30)
+            expect(result).toBe("Drink Whisky");
+        });
+
+        it("should be unable to return a drink when called as whatCanIDrink(140)", function() {
+            var result = whatCanIDrink(140)
+            expect(result).toBe("Sorry. I can’t tell what drink because that age is incorrect!");
+        });
+
+        it("should contain Drink when called as whatCanIDrink(17)", function() {
+            var result = whatCanIDrink(10).indexOf("Drink");
+            expect(result).not.toEqual(-1);
+        });
     });
 });
+
+// describe ("whatCanIDrink", function() {
+
+//     beforeEach(function(){
+//         age = new whatCanIDrink;
+//     });
+
+
+//     describe("age tests", function() {
+//         it("should return an error if <0 ", function (){
+//             age < (0);
+//             expect(window.alert).toHaveBeenCalledWith("Sorry. I can't tell what drink because the age is incorrect!");
+//         });
+//         it("should return a message if < 14", function(){
+//             age < (14);
+//             expect(console.log).toBe("Drink Toddy");
+//         })
+//         it("should return a message if < 18", function(){
+//             age < (18);
+//             expect(console.log).toBe("Drink Coke");
+//         })
+//         it("should return a message if < 21", function(){
+//             age < (21);
+//             expect(console.log).toBe("Drink Beer");
+//         })
+//         it("should return a message if < 130", function(){
+//             age < (130);
+//             expect(console.log).toBe("Drink Whisky");
+//         })
+//     });
+// });
